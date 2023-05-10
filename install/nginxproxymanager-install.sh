@@ -185,7 +185,7 @@ motd_ssh
 root
 
 msg_info "Starting Services"
-sed -i -e 's/^pid/#pid/' -e 's/npmuser/root/' /usr/local/openresty/nginx/conf/nginx.conf
+sed -i 's/user npm/user root/g; s/^pid/#pid/g' /usr/local/openresty/nginx/conf/nginx.conf
 sed -i 's/include-system-site-packages = false/include-system-site-packages = true/g' /opt/certbot/pyvenv.cfg
 $STD systemctl enable --now openresty
 $STD systemctl enable --now npm
